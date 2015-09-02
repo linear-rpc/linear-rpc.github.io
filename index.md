@@ -1,7 +1,8 @@
 # Linear RPC
 
 ## Overview
-linear-rpc organization includes
+[linear-rpc organization](https://github.com/linear-rpc)
+includes
 '[msgpack-rpc](https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md)
 \+ α' implementations for some programming languages.  
 
