@@ -2,7 +2,7 @@
 <html>
   <head>
       <meta charset="utf-8" />
-      <title>Linear-RPC</title>
+      <title>index</title>
       <style>.markdown-preview, .markdown-preview[data-use-github-style] { font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 16px; line-height: 1.6; word-wrap: break-word; overflow: scroll; box-sizing: border-box; padding: 20px; background-color: rgb(255, 255, 255); }
 .markdown-preview > :first-child, .markdown-preview[data-use-github-style] > :first-child { margin-top: 0px !important; }
 .markdown-preview > :last-child, .markdown-preview[data-use-github-style] > :last-child { margin-bottom: 0px !important; }
@@ -388,23 +388,25 @@ pre.editor-colors .markdown .link .string.title,
 includes
 &#39;<a href="https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md">msgpack-rpc</a>
 + α&#39; implementations for some programming languages.  </p>
-<p><em>Although we know that there are some implementations, we need WebSocket, SSL transport etc.. And we also need &#39;Request from a server&#39;, &#39;Notify from a server&#39; functions etc..</em><br><em>So we implement them.</em></p>
+<p>This software can realize <strong>the transmission of the typed data between various devices</strong>.<br>And this software can be used for a remote control of various devices, and moreover it&#39;s possible to apply to the field such as M2M and IoT.</p>
 <h2 id="what-is-">What is &#39;+ α&#39;</h2>
 <p>linear-rpc is almost the same as msgpack-rpc, but there is just a little bit difference.</p>
-<h3 id="transports">Transports</h3>
+<h3 id="1-transports">1. Transports</h3>
 <p>Our implementation can use <strong>TCP, SSL, WebSocket and WebSocket-Secure</strong> transports now.<br>(But there are some limitations on each programming language. Please refer to README.md etc. in each repository)</p>
-<h3 id="request-message">Request Message</h3>
+<h3 id="2-message-format">2. Message Format</h3>
+<h4 id="request-message">Request Message</h4>
 <p>All of existing implementations can send &#39;Request&#39; from only a client. And in the case of receiving &#39;Request&#39; at a client, they throw an exception or just ignore it.<br>But linear-rpc can send &#39;Request&#39; from a server and can handle &#39;Request&#39; at a client.</p>
 <ul>
-<li>Msgpack-RPC  </li>
-</ul>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>[type,&nbsp;msgid,&nbsp;method,&nbsp;params]&nbsp;&nbsp;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>params&nbsp;:=&nbsp;Array&nbsp;of&nbsp;arbitrary&nbsp;object</span></span></span></div></pre><blockquote>
+<li>Msgpack-RPC  <pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>[type,&nbsp;msgid,&nbsp;method,&nbsp;params]&nbsp;&nbsp;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>params&nbsp;:=&nbsp;Array&nbsp;of&nbsp;arbitrary&nbsp;object</span></span></span></div></pre><blockquote>
 <p>params<br>The array of the function arguments. The elements of this array is arbitrary object.<br><a href="https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md#params">https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md#params</a></p>
-<ul>
-<li>Linear-RPC<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>params&nbsp;:=&nbsp;Arbitrary&nbsp;object</span></span></span></div></pre>params will be allowed without an array</li>
-</ul>
 </blockquote>
-<h3 id="response-message">Response Message</h3>
+</li>
+<li>Linear-RPC<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>params&nbsp;:=&nbsp;Arbitrary&nbsp;object</span></span></span></div></pre><blockquote>
+<p>params will be allowed without an array</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="response-message">Response Message</h4>
 <p>linear-rpc can send and receive &#39;Response&#39; on both a server and a client.</p>
 <ul>
 <li>Msgpack-RPC and Linear-RPC  <pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>[type,&nbsp;msgid,&nbsp;error,&nbsp;result]</span></span></span></div></pre><blockquote>
@@ -412,7 +414,7 @@ includes
 </blockquote>
 </li>
 </ul>
-<h3 id="notification-message">Notification Message</h3>
+<h4 id="notification-message">Notification Message</h4>
 <p>linaer-rpc can send and receive &#39;Notification&#39; on both a server and a client.</p>
 <ul>
 <li>Msgpack-RPC  <pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>[type,&nbsp;method,&nbsp;params]&nbsp;&nbsp;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>params&nbsp;:=&nbsp;Array&nbsp;of&nbsp;arbitrary&nbsp;object</span></span></span></div></pre><blockquote>

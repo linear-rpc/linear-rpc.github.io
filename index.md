@@ -6,26 +6,24 @@ includes
 '[msgpack-rpc](https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md)
 \+ α' implementations for some programming languages.  
 
-_Although we know that there are some implementations, we need WebSocket, SSL transport etc.. And we also need 'Request from a server', 'Notify from a server' functions etc.._  
-_So we implement them._
+This software can realize __the transmission of the typed data between various devices__.  
+And this software can be used for a remote control of various devices, and moreover it's possible to apply to the field such as M2M and IoT.
 
 ## What is '+ α'
 linear-rpc is almost the same as msgpack-rpc, but there is just a little bit difference.
-
-### Transports
+### 1. Transports
 Our implementation can use __TCP, SSL, WebSocket and WebSocket-Secure__ transports now.  
 (But there are some limitations on each programming language. Please refer to README.md etc. in each repository)
 
-### Request Message
+### 2. Message Format
+#### Request Message
 All of existing implementations can send 'Request' from only a client. And in the case of receiving 'Request' at a client, they throw an exception or just ignore it.  
 But linear-rpc can send 'Request' from a server and can handle 'Request' at a client.
 * Msgpack-RPC  
-
 ```
 [type, msgid, method, params]  
 params := Array of arbitrary object
 ```
-
 > params  
 > The array of the function arguments. The elements of this array is arbitrary object.  
 > [https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md#params](https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md#params)
@@ -35,7 +33,7 @@ params := Arbitrary object
 ```
 > params will be allowed without an array
 
-### Response Message
+#### Response Message
 linear-rpc can send and receive 'Response' on both a server and a client.
 * Msgpack-RPC and Linear-RPC  
 ```
@@ -43,7 +41,7 @@ linear-rpc can send and receive 'Response' on both a server and a client.
 ```
 > no difference.
 
-### Notification Message
+#### Notification Message
 linaer-rpc can send and receive 'Notification' on both a server and a client.
 * Msgpack-RPC  
 ```
