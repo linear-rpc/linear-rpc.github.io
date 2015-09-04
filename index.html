@@ -2,7 +2,7 @@
 <html>
   <head>
       <meta charset="utf-8" />
-      <title>index</title>
+      <title>Linear-RPC</title>
       <style>.markdown-preview, .markdown-preview[data-use-github-style] { font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 16px; line-height: 1.6; word-wrap: break-word; overflow: scroll; box-sizing: border-box; padding: 20px; background-color: rgb(255, 255, 255); }
 .markdown-preview > :first-child, .markdown-preview[data-use-github-style] > :first-child { margin-top: 0px !important; }
 .markdown-preview > :last-child, .markdown-preview[data-use-github-style] > :last-child { margin-bottom: 0px !important; }
@@ -384,11 +384,11 @@ pre.editor-colors .markdown .link .string.title,
   </head>
   <body class='markdown-preview'><h1 id="linear-rpc">Linear RPC</h1>
 <h2 id="overview">Overview</h2>
-<p><a href="https://github.com/linear-rpc">linear-rpc organization</a>
+<p><a href="https://github.com/linear-rpc">linear-rpc</a>
 includes
 &#39;<a href="https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md">msgpack-rpc</a>
 + α&#39; implementations for some programming languages.  </p>
-<p><em>Although we know that there are some implementations, but we need WebSocket, SSL transport etc.. And we also need &#39;Request from a server&#39;, &#39;Notify from a server&#39; functions etc..</em><br><em>So we implement them.</em></p>
+<p><em>Although we know that there are some implementations, we need WebSocket, SSL transport etc.. And we also need &#39;Request from a server&#39;, &#39;Notify from a server&#39; functions etc..</em><br><em>So we implement them.</em></p>
 <h2 id="what-is-">What is &#39;+ α&#39;</h2>
 <p>linear-rpc is almost the same as msgpack-rpc, but there is just a little bit difference.</p>
 <h3 id="transports">Transports</h3>
@@ -396,15 +396,14 @@ includes
 <h3 id="request-message">Request Message</h3>
 <p>All of existing implementations can send &#39;Request&#39; from only a client. And in the case of receiving &#39;Request&#39; at a client, they throw an exception or just ignore it.<br>But linear-rpc can send &#39;Request&#39; from a server and can handle &#39;Request&#39; at a client.</p>
 <ul>
-<li>Msgpack-RPC  <pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>[type,&nbsp;msgid,&nbsp;method,&nbsp;params]&nbsp;&nbsp;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>params&nbsp;:=&nbsp;Array&nbsp;of&nbsp;arbitrary&nbsp;object</span></span></span></div></pre><blockquote>
-<p>params<br>The array of the function arguments. The elements of this array is arbitrary object.<br><a href="https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md#params">https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md#params</a></p>
-</blockquote>
-</li>
-<li>Linear-RPC<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>params&nbsp;:=&nbsp;Arbitrary&nbsp;object</span></span></span></div></pre><blockquote>
-<p>params will be allowed without an array</p>
-</blockquote>
-</li>
+<li>Msgpack-RPC  </li>
 </ul>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>[type,&nbsp;msgid,&nbsp;method,&nbsp;params]&nbsp;&nbsp;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>params&nbsp;:=&nbsp;Array&nbsp;of&nbsp;arbitrary&nbsp;object</span></span></span></div></pre><blockquote>
+<p>params<br>The array of the function arguments. The elements of this array is arbitrary object.<br><a href="https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md#params">https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md#params</a></p>
+<ul>
+<li>Linear-RPC<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>params&nbsp;:=&nbsp;Arbitrary&nbsp;object</span></span></span></div></pre>params will be allowed without an array</li>
+</ul>
+</blockquote>
 <h3 id="response-message">Response Message</h3>
 <p>linear-rpc can send and receive &#39;Response&#39; on both a server and a client.</p>
 <ul>
@@ -426,13 +425,13 @@ includes
 </li>
 </ul>
 <h2 id="faq">FAQ</h2>
-<h3 id="so-few-tests-exist-">So few tests exist!</h3>
-<p>Sorry. We have some more test codes and do test with some real products, but they are so dirty and complicated.<br>We&#39;ll add simple tests that work with Open CI platform in the future.  </p>
+<h3 id="there-are-few-tests-">There are few tests!</h3>
+<p>Sorry. We have some more test codes and do test with some real products, but they are so dirty and complicated.<br>We&#39;ll add more tests that work with Open CI platform gradually.  </p>
 <h3 id="how-about-android-java-">How about android (java)?</h3>
 <p>We have created linear-java internal.<br>But we are using JNI like an implementation of linear-objc and android platform supports many cpu arch.<br>Since we can&#39;t support all of them (Even if we receive some issues or pull requests, we can&#39;t confirm it.), we do not publish. And we don&#39;t have a plan to create Java native now.</p>
 <h2 id="contributions">Contributions</h2>
 <p><strong>Please feel free to create issues or send pull requests</strong></p>
 <p><em>We&#39;d appreciate any issues and pull requests.</em><br><em>We may not be able to replay quickly, but we surely will.</em></p>
 <h2 id="thanks-to">Thanks to</h2>
-<p>Great thanks to all of the developers who contribute several open source softwares!</p></body>
+<p>Great thanks to all of the developers who contribute several open source software!</p></body>
 </html>
